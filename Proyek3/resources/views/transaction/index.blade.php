@@ -27,7 +27,7 @@
     </div>
     <div class="row my-2 mt-4 ms-1">
         <div class="col-lg-12">
-            <h5>Data Tamu Aktiv </h5>
+            <h5>Data Pesanan Masuk </h5>
         </div>
     </div>
     <div class="row">
@@ -48,7 +48,7 @@
                                     <th>Harga</th>
                                     <th>DP</th>
                                     <th>Kekurangan</th>
-                                    <th>Action</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -95,7 +95,7 @@
     </div>
     <div class="row my-2 mt-4 ms-1">
         <div class="col-lg-12">
-            <h5>Expired: </h5>
+            <h5>Pesanan yang dibatalkan</h5>
         </div>
     </div>
     <div class="row">
@@ -109,14 +109,14 @@
                                     <th>#</th>
                                     <th>ID</th>
                                     <th>Customer</th>
-                                    <th>Room</th>
+                                    <th>Kamar</th>
                                     <th>Check In</th>
                                     <th>Check Out</th>
-                                    <th>Days</th>
-                                    <th>Total Price</th>
-                                    <th>Paid Off</th>
-                                    <th>Debt</th>
-                                    <th>Action</th>
+                                    <th>Hari</th>
+                                    <th>Harga</th>
+                                    <th>DP</th>
+                                    <th>Kekurangan</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -170,21 +170,19 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Have any account?</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Sudah punya akun?</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="d-flex justify-content-center">
                         <a class="btn btn-sm btn-primary m-1"
-                            href="{{ route('transaction.reservation.createIdentity') }}">No, create
-                            new account!</a>
+                            href="{{ route('transaction.reservation.createIdentity') }}">Buat akun baru</a>
                         <a class="btn btn-sm btn-success m-1"
-                            href="{{ route('transaction.reservation.pickFromCustomer') }}">Yes, use
-                            their account!</a>
+                            href="{{ route('transaction.reservation.pickFromCustomer') }}">Sudah punya akses</a>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                 </div>
             </div>
         </div>

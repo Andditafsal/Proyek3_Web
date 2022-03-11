@@ -46,14 +46,14 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Number</th>
-                                            <th scope="col">Type</th>
-                                            <th scope="col">Capacity</th>
+                                            <th scope="col">Nomor</th>
+                                            <th scope="col">Tipe Kamar</th>
+                                            <th scope="col">Kapasitas Orang</th>
                                             <th scope="col">Stock</th>
-                                            <th scope="col">Price / Day</th>
+                                            <th scope="col">Harga/Hari</th>
                                             {{-- <th scope="col">View</th> --}}
                                             <th scope="col">Status</th>
-                                            <th scope="col">Action</th>
+                                            <th scope="col">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -104,9 +104,6 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-                        <div class="card-footer">
-                            <h3>Room</h3>
                         </div>
                     </div>
                 </div>

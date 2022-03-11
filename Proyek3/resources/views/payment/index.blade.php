@@ -8,11 +8,11 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Room</th>
-                        <th scope="col">Paid Off</th>
+                        <th scope="col">Kamar</th>
+                        <th scope="col">Bayar</th>
                         <th scope="col">Status</th>
-                        <th scope="col">At</th>
-                        <th scope="col">Served By</th>
+                        <th scope="col">Dari</th>
+                        <th scope="col">Pegawai</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>

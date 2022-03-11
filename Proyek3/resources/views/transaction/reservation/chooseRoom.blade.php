@@ -66,7 +66,7 @@
                                                 {{ Str::plural('Person', $room->capacity) }}</strong>
                                             <h3 class="mb-0">{{ $room->number }} ~ {{ $room->type->name }}</h3>
                                             <div class="mb-1 text-muted">{{ Helper::convertToRupiah($room->price) }} /
-                                                Day
+                                                Hari
                                             </div>
                                             <div class="wrapper">
                                                 <p class="card-text mb-auto demo-1">{{ $room->view }}</p>

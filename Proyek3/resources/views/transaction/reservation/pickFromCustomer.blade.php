@@ -11,7 +11,7 @@
             <form class="d-flex" method="GET" action="{{ route('transaction.reservation.pickFromCustomer') }}">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search-user"
                         name="q" value="{{ request()->input('q') }}">
-                    <button class="btn btn-outline-dark" type="submit">Search</button>
+                    <button class="btn btn-outline-dark" type="submit">Cari</button>
                 </form>
             </div>
         </div>

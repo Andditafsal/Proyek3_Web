@@ -15,7 +15,7 @@
                     @endif
 
                     {{ __('You are logged in!') }}
-                    {{__('Go to ')}} <a href="/dashboard">app</a>
+                    {{__('Go to ')}} <a href="/dashboard">Aplikasi</a>
                 </div>
             </div>
         </div>
