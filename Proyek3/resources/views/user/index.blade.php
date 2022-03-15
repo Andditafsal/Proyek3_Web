@@ -20,9 +20,9 @@
                     <form class="d-flex" method="GET" action="{{ route('user.index') }}">
                         <input type="hidden" name="qc" value="{{ request()->input('qc') }}">
                         <input type="hidden" name="customers" value="{{ request()->input('customers') }}">
-                        <input class="form-control me-2" type="search" placeholder="Search by name" aria-label="Search"
+                        <input class="form-control me-2" type="search" placeholder="Cari berdasarkan nama" aria-label="Search"
                             id="search-user" name="qu" value="{{ request()->input('qu') }}">
-                        <button class="btn btn-outline-dark" type="submit">Search</button>
+                        <button class="btn btn-outline-dark" type="submit">Cari</button>
                     </form>
                 </div>
             </div>
@@ -35,10 +35,10 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Name</th>
+                                            <th scope="col">Nama</th>
                                             <th scope="col">Email</th>
                                             <th scope="col">Role</th>
-                                            <th scope="col">Action</th>
+                                            <th scope="col">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -93,7 +93,7 @@
                                         @empty
                                             <tr>
                                                 <td colspan="10" class="text-center">
-                                                    There's no data in this table
+                                                    Tidak ada data tabel
                                                 </td>
                                             </tr>
                                         @endforelse
@@ -123,9 +123,9 @@
                     <form class="d-flex" method="GET" action="{{ route('user.index') }}">
                         <input type="hidden" name="qu" value="{{ request()->input('qu') }}">
                         <input type="hidden" name="users" value="{{ request()->input('users') }}">
-                        <input class="form-control me-2" type="search" placeholder="Search by name" aria-label="Search"
+                        <input class="form-control me-2" type="search" placeholder="Cari berdasarkan nama" aria-label="Search"
                             id="search-user" name="qc" value="{{ request()->input('qc') }}">
-                        <button class="btn btn-outline-dark" type="submit">Search</button>
+                        <button class="btn btn-outline-dark" type="submit">Cari</button>
                     </form>
                 </div>
             </div>
@@ -138,10 +138,10 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Name</th>
+                                            <th scope="col">Nama</th>
                                             <th scope="col">Email</th>
                                             <th scope="col">Role</th>
-                                            <th scope="col">Action</th>
+                                            <th scope="col">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -184,19 +184,19 @@
                                                     <a class="btn btn-light btn-sm rounded shadow-sm border p-0 m-0 disabled"
                                                         href="/user/detail/{{ $user->id }}" data-bs-toggle="tooltip"
                                                         data-bs-placement="top" title="Detail User">
-                                                        <svg width="25" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
+                                                        {{-- <svg width="25" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
                                                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                                 stroke-width="2"
                                                                 d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
-                                                        </svg>
+                                                        </svg> --}}
                                                     </a>
                                                 </td>
                                             </tr>
                                         @empty
                                             <tr>
                                                 <td colspan="10" class="text-center">
-                                                    There's no data in this table
+                                                    Tidak ada data dalam tabel
                                                 </td>
                                             </tr>
                                         @endforelse
@@ -235,12 +235,12 @@
             })
 
             swalWithBootstrapButtons.fire({
-                title: 'Are you sure?',
-                text: user_name + " will be deleted, You won't be able to revert this!",
+                title: 'Apakah anda yakin ingin menghapus ini?',
+                text: user_name + " akan dihapus dan tidak dapat mengembalikannya lagi!",
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Yes, delete it!',
-                cancelButtonText: 'No, cancel! ',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak ',
                 reverseButtons: true
             }).then((result) => {
                 if (result.isConfirmed) {

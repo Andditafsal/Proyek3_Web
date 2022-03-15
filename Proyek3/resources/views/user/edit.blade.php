@@ -21,7 +21,7 @@
                         @method('PUT')
                         @csrf
                         <div class="col-md-12">
-                            <label for="name" class="form-label">Name</label>
+                            <label for="name" class="form-label">Nama</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
                                 name="name" value="{{ $user->name }}">
                             @error('name')
@@ -43,7 +43,7 @@
                         <div class=" col-md-12">
                             <label for="role" class="form-label">Role</label>
                             <select id="role" name="role" class="form-select @error('password') is-invalid @enderror">
-                                <option selected disabled hidden>Choose...</option>
+                                <option selected disabled hidden>Pilih...</option>
                                 @if (in_array($user->role, ['Super', 'Admin']))
                                     <option value="Super" @if ($user->role == 'Super') selected @endif>Super</option>
                                     <option value="Admin" @if ($user->role == 'Admin') selected @endif>Admin</option>
@@ -59,7 +59,7 @@
                             @enderror
                         </div>
                         <div class="col-12">
-                            <button type="submit" class="btn btn-light shadow-sm border float-end">Save</button>
+                            <button type="submit" class="btn btn-light shadow-sm border float-end">Simpan</button>
                         </div>
                     </form>
                 </div>

@@ -85,6 +85,7 @@ Route::group(['middleware' => ['auth', 'checkRole:Super,Admin,Customer']], funct
     Route::get('/notification-to/{id}',[NotificationsController::class, 'routeTo'])->name('notification.routeTo');
 });
 
+
 Route::view('/login', 'auth.login')->name('login');
 Route::post('/postLogin', [AuthController::class, 'postLogin'])->name('postlogin');
 

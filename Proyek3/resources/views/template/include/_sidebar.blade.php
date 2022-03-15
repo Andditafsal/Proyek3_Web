@@ -36,10 +36,10 @@
                         <i class="fas fa-house-user"></i>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('room.index') }}">Room</a></li>
-                        <li><a class="dropdown-item" href="{{ route('type.index') }}">Type</a></li>
+                        <li><a class="dropdown-item" href="{{ route('room.index') }}">Kamar</a></li>
+                        <li><a class="dropdown-item" href="{{ route('type.index') }}">Tipe</a></li>
                         <li><a class="dropdown-item" href="{{ route('roomstatus.index') }}">Status</a></li>
-                        <li><a class="dropdown-item" href="{{ route('facility.index') }}">Facility</a></li>
+                        <li><a class="dropdown-item" href="{{ route('facility.index') }}">Fasilitas</a></li>
                     </ul>
                 </li>
                 <li>

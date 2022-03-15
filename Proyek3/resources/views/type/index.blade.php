@@ -17,9 +17,9 @@
                 </div>
                 <div class="col-lg-6 mb-2">
                     <form class="d-flex" method="GET" action="{{ route('type.index') }}">
-                        <input class="form-control me-2" type="Search by name" placeholder="Search by name"
+                        <input class="form-control me-2" type="Search by name" placeholder="Cari berdasarkan nama"
                             aria-label="Search" id="search" name="search" value="{{ request()->input('search') }}">
-                        <button class="btn btn-outline-dark" type="submit">Search</button>
+                        <button class="btn btn-outline-dark" type="submit">Cari</button>
                     </form>
                 </div>
             </div>
@@ -32,9 +32,9 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Information</th>
-                                            <th scope="col">Action</th>
+                                            <th scope="col">Nama kamar</th>
+                                            <th scope="col">Informasi Tentang Kamar</th>
+                                            <th scope="col">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -82,7 +82,7 @@
                                         @empty
                                             <tr>
                                                 <td colspan="10" class="text-center">
-                                                    There's no data in this table
+                                                    Tidak ada data
                                                 </td>
                                             </tr>
                                         @endforelse
@@ -91,7 +91,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <h3>Room Type</h3>
+                            <h3>Tipe Kamar</h3>
                         </div>
                     </div>
                 </div>
@@ -121,12 +121,12 @@
         })
 
         swalWithBootstrapButtons.fire({
-            title: 'Are you sure?',
-            text: type_name + " will be deleted, You won't be able to revert this!",
+            title:'Apakah anda yakin ingin menghapus ini?',
+            text: type_name + " akan dihapus dan tidak dapat mengembalikannya lagi!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Yes, delete it!',
-            cancelButtonText: 'No, cancel! ',
+            confirmButtonText: 'Ya',
+            cancelButtonText: 'Tidak ',
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
