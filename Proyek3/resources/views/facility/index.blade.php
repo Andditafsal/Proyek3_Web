@@ -3,7 +3,6 @@
 @section('content')
 
 @endsection
-{{--
 @section('footer')
 <script>
     $('.delete').click(function() {
@@ -17,7 +16,6 @@
             },
             buttonsStyling: false
         })
-
         swalWithBootstrapButtons.fire({
             title: 'Are you sure?',
             text: "Room number " + room_name + " will be deleted, You won't be able to revert this!",
@@ -34,6 +32,5 @@
             }
         })
     });
-
 </script>
-@endsection --}}
+@endsection 

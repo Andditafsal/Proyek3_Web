@@ -33,15 +33,31 @@ use Illuminate\Support\Facades\Route;
 
 
 
-
-Route::group(['middleware' => ['auth', 'checkRole:Super']], function () {
-    Route::resource('user', UserController::class);
+Route::get('tampilan', function (){
+    return view('landing/layouts/template');
 });
 
-Route::group(['middleware' => ['auth', 'checkRole:Super,Admin']], function () {
-    Route::post('/room/{room}/image/upload', [ImageController::class, 'store'])->name('image.store');
-    Route::delete('/image/{image}', [ImageController::class, 'destroy'])->name('image.destroy');
+Route::get('tampilan', function (){
+    return view('/landing/template');
+});
 
+Route::get('reservation', function (){
+    return view('/landing/reservation');
+});
+
+Route::get('roomdetail', function (){
+    return view('/landing/roomdetail');
+});
+Route::get('rooms', function (){
+    return view('/landing/rooms');
+});
+
+
+Route::prefix("admin")->group(function() {
+    Route::resource('type', TypeController::class);
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::post('/room/{room}/image/upload', [ImageController::class, 'store'])->name('image.store');
+    Route::resource('roomstatus', RoomStatusController::class);
     Route::name('transaction.reservation.')->group(function () {
         Route::get('/createIdentity', [TransactionRoomReservationController::class, 'createIdentity'])->name('createIdentity');
         Route::get('/pickFromCustomer', [TransactionRoomReservationController::class, 'pickFromCustomer'])->name('pickFromCustomer');
@@ -51,13 +67,21 @@ Route::group(['middleware' => ['auth', 'checkRole:Super,Admin']], function () {
         Route::get('/{customer}/{room}/{from}/{to}/confirmation', [TransactionRoomReservationController::class, 'confirmation'])->name('confirmation');
         Route::post('/{customer}/{room}/payDownPayment', [TransactionRoomReservationController::class, 'payDownPayment'])->name('payDownPayment');
     });
-
-    Route::resource('customer', CustomerController::class);
-    Route::resource('type', TypeController::class);
-    Route::resource('room', RoomController::class);
-    Route::resource('roomstatus', RoomStatusController::class);
     Route::resource('transaction', TransactionController::class);
     Route::resource('facility', FacilityController::class);
+    Route::resource('customer', CustomerController::class);
+    Route::group(['middleware' => ['auth', 'checkRole:Super']], function () {
+        Route::resource('user', UserController::class);
+    });
+
+
+});
+
+Route::group(['middleware' => ['auth', 'checkRole:Super,Admin']], function () {
+
+    Route::delete('/image/{image}', [ImageController::class, 'destroy'])->name('image.destroy');
+
+    Route::resource('room', RoomController::class);
 
     Route::get('/payment', [PaymentController::class, 'index'])->name('payment.index');
     Route::get('/payment/{payment}/invoice', [PaymentController::class, 'invoice'])->name('payment.invoice');
@@ -67,22 +91,29 @@ Route::group(['middleware' => ['auth', 'checkRole:Super,Admin']], function () {
 
     Route::get('/get-dialy-guest-chart-data', [ChartController::class, 'dialyGuestPerMonth']);
     Route::get('/get-dialy-guest/{year}/{month}/{day}', [ChartController::class, 'dialyGuest'])->name('chart.dialyGuest');
+
+
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:Super,Admin,Customer']], function () {
-    Route::resource('user', UserController::class)->only([
-        'show'
-    ]);
+
 
     Route::view('/notification', 'notification.index')->name('notification.index');
-
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
-
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::get('/mark-all-as-read', [NotificationsController::class, 'markAllAsRead'])->name('notification.markAllAsRead');
 
     Route::get('/notification-to/{id}',[NotificationsController::class, 'routeTo'])->name('notification.routeTo');
+
+    Route::get('/sendEvent', function () {
+        $superAdmins = User::where('role', 'Super')->get();
+        event(new RefreshDashboardEvent("Someone reserved a room"));
+
+        foreach ($superAdmins as $superAdmin) {
+            $message = 'Reservation added by';
+            // event(new NewReservationEvent($message, $superAdmin));
+        }
+    });
 });
 
 
@@ -91,12 +122,4 @@ Route::post('/postLogin', [AuthController::class, 'postLogin'])->name('postlogin
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/sendEvent', function () {
-    $superAdmins = User::where('role', 'Super')->get();
-    event(new RefreshDashboardEvent("Someone reserved a room"));
 
-    foreach ($superAdmins as $superAdmin) {
-        $message = 'Reservation added by';
-        // event(new NewReservationEvent($message, $superAdmin));
-    }
-});
