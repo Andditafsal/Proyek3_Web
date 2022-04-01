@@ -93,7 +93,7 @@
     </header>
     <div class="container my-5">
       <div class="section-title">
-        <h2>Our finest collection of rooms</h2>
+        <h2>Koleksi Kamar Terbaik</h2>
       </div>
       <div class="row custom-room-cards">
         <!-- Room element start -->

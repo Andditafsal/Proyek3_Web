@@ -16,7 +16,7 @@
                     @endif
 
                     {{ __('Kamu akan login') }}
-                    {{__('AYO ')}} <a href="/dashboard">Aplikasi</a>
+                    {{__('AYO ')}} <a href="admin/dashboard">Aplikasi</a>
                 </div>
             </div>
         </div>

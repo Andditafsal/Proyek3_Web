@@ -19,6 +19,9 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LogintampilanController;
+use App\Http\Controllers\RegistertampilanController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -123,3 +126,8 @@ Route::post('/postLogin', [AuthController::class, 'postLogin'])->name('postlogin
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
+Route::get('/logintampilan', [LogintampilanController::class, 'index']);
+
+Route::get('/registertampilan', [RegistertampilanController::class, 'index']);
+
+Route::post('/registertampilan', [RegistertampilanController::class, 'store']);

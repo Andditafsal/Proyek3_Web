@@ -73,23 +73,24 @@
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  Account
+                  Login
                 </a>
                 <div
                   class="dropdown-menu dropdown-menu-right"
                   aria-labelledby="navbarDropdown"
                 >
-                  <span class="dropdown-item"
+                  {{-- <span class="dropdown-item"
                     >Signed in as <b>lemon potter</b></span
-                  >
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="./admin/index.html">Admin</a>
-                  <a class="dropdown-item" href="login.html">Log in</a>
-                  <a class="dropdown-item" href="signup.html">Sign up</a>
-                  <a class="dropdown-item" href="signup.html">Account</a>
-                  <div class="dropdown-divider"></div>
+                  > --}}
+                  {{-- <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="./admin/index.html">Admin</a> --}}
+                  {{-- <a class="dropdown-item" href="login.html">Log in</a> --}}
+                  {{-- <a class="dropdown-item" href="signup.html">Sign up</a> --}}
+                  <a class="dropdown-item" href="{{ url('/logintampilan')}}">Login</a>
+                  <a class="dropdown-item" href="{{ url('/registertampilan')}}">Register</a>
+                  {{-- <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#">Something else here</a>
-                </div>
+                </div> --}}
               </li>
             </ul>
           </div>
@@ -265,7 +266,7 @@
             <div class="col-md-5">
               <div class="content">
                 <div class="section-title">
-                  <h2>Choose the perfect accomodation</h2>
+                  <h2>Pilih kamar terbaik anda</h2>
                 </div>
                 <p>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos
@@ -333,7 +334,7 @@
             <div class="col-md-5">
               <div class="content">
                 <div class="section-title">
-                  <h2>Premium deals for your premium needs</h2>
+                  <h2>Penawaran kamar terbaik sesuai dengan kebutuhan anda</h2>
                 </div>
                 <p>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos
