@@ -16,6 +16,7 @@ use App\Http\Controllers\RoomController;
 use App\Http\Controllers\TransactionRoomReservationController;
 use App\Http\Controllers\RoomStatusController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -44,9 +45,9 @@ Route::get('tampilan', function (){
     return view('/landing/template');
 });
 
-Route::get('reservation', function (){
-    return view('/landing/reservation');
-});
+Route::get('/reservation', [ReservationController::class, 'index']);
+Route::get('/room-data/{room_id?}', [ReservationController::class, 'roomAjax'])->name('room.data');
+Route::post('/reservation/store', [ReservationController::class, 'store'])->name('reservation.store');
 
 Route::get('roomdetail', function (){
     return view('/landing/roomdetail');

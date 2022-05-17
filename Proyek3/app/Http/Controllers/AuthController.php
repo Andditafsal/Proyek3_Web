@@ -11,6 +11,10 @@ class AuthController extends Controller
     public function postLogin(PostLoginRequest $request)
     {
         if (Auth::attempt($request->only('email', 'password'))) {
+            if(auth()->user()->role == 'Customer'){
+            return redirect('tampilan')->with('success', 'Welcome ' . auth()->user()->name);
+            }
+
             return redirect('admin/dashboard')->with('success', 'Welcome ' . auth()->user()->name);
         }
         return redirect('login')->with('failed', 'Incorrect email / password');

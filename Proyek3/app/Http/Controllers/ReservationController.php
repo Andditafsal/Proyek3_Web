@@ -5,34 +5,61 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Models\Customer;
 use App\Models\User;
+use App\Models\Type;
+use App\Models\Room;
+use App\Models\Transaction;
+use App\Models\Payment;
 use App\Repositories\CustomerRepository;
 use App\Repositories\ImageRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class CustomerController extends Controller
+class ReservationController extends Controller
 {
-    private $customerRepository;
-
-    public function __construct(CustomerRepository $customerRepository)
-    {
-        $this->customerRepository = $customerRepository;
-    }
 
     public function index(Request $request)
     {
-        $customers = $this->customerRepository->get($request);
-        return view('customer.index', compact('customers'));
+        $data['room_type'] = Type::get();
+        return view('/landing/reservation', $data);
     }
 
     public function create()
     {
-        return view('customer.create');
+
     }
 
-    public function store(StoreCustomerRequest $request)
+    public function store(Request $request)
     {
-        $customer = $this->customerRepository->store($request);
-        return redirect()->route('customer.index')->with('success', 'Customer ' . $customer->name . ' created');
+        try {
+            DB::beginTransaction();
+            $transaksi = Transaction::create([
+                'user_id'       => auth()->user()->id,
+                'customer_id'   => Customer::where('user_id', auth()->user()->id)->first()->id,
+                'room_id'       => $request->room,
+                'check_in'      => $request->check_in,
+                'check_out'     => $request->check_out,
+                'status'        => 'Reservation',
+            ]);
+
+            $payment =  Payment::create([
+                'user_id'       => auth()->user()->id,
+                'transaction_id'=> $transaksi->id,
+                'status'        => 'Down Payment'
+            ]);
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            dd($e->getMessage());
+        }
+        
+        return redirect('admin/dashboard')->with('success', 'Booking atas nama '. auth()->user()->name . ' berhasil dibuat!');
+    }
+    public function roomAjax($type_id){
+        $data = Room::where('type_id', $type_id)->get();
+
+        return response()->json($data);
     }
 
     public function show(Customer $customer)

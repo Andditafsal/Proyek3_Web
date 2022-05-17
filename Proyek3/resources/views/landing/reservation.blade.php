@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <title>Reservation Form</title>
 
@@ -16,6 +17,8 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     />
+
+    <script src={{asset('style/js/jquery.js')}}></script>
   </head>
 
   <body>
@@ -175,10 +178,11 @@
             </div>
             <div class="col-md-4 col-md-pull-7">
               <div class="booking-form">
-                <form>
+                <form action="{{route('reservation.store')}}" method="post">
+                    @csrf
                   <div class="form-group">
                     <span class="form-label">Enter your Name</span>
-                    <input
+                    <input name="name"
                       class="form-control"
                       type="text"
                       placeholder="Enter your name"
@@ -188,6 +192,7 @@
                   <div class="form-group">
                     <span class="form-label">Phone Number</span>
                     <input
+                    name="phone_number"
                       class="form-control"
                       type="number"
                       placeholder="Enter your phone number"
@@ -196,63 +201,35 @@
                   </div>
                   <div class="form-group">
                     <span class="form-label">Room Type</span>
-                    <select class="form-control" required>
+                    <select name="type" id="type" class="form-control" required>
                       <option value="">Select</option>
-                      <option value="AC">classic Double room</option>
-                      <option value="AC">classic Double room</option>
-                      <option value="AC">classic Double room</option>
-                      <option value="AC">classic Double room</option>
+                      @foreach ($room_type as $room)
+                        <option value="{{$room->id}}">{{$room->name}}</option>
+                      @endforeach
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <span class="form-label">Room</span>
+                    <select name="room" id="room" class="form-control" required>
+                      <option value="">Select</option>
+
                     </select>
                   </div>
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
                         <span class="form-label">Check In</span>
-                        <input class="form-control" type="date" required />
+                        <input name="check_in" class="form-control" type="date" required />
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <span class="form-label">Check out</span>
-                        <input class="form-control" type="date" required />
+                        <input name="check_out" class="form-control" type="date" required />
                       </div>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col-sm-4">
-                      <div class="form-group">
-                        <span class="form-label">Rooms</span>
-                        <select class="form-control" required>
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                        </select>
-                        <span class="select-arrow"></span>
-                      </div>
-                    </div>
-                    <div class="col-sm-4">
-                      <div class="form-group">
-                        <span class="form-label">Adults</span>
-                        <select class="form-control" required>
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                        </select>
-                        <span class="select-arrow"></span>
-                      </div>
-                    </div>
-                    <div class="col-sm-4">
-                      <div class="form-group">
-                        <span class="form-label">Children</span>
-                        <select class="form-control" required>
-                          <option>0</option>
-                          <option>1</option>
-                          <option>2</option>
-                        </select>
-                        <span class="select-arrow"></span>
-                      </div>
-                    </div>
-                  </div>
+                
                   <div class="form-btn">
                     <button class="submit-btn">Confirm Booking</button>
                   </div>
@@ -263,5 +240,30 @@
         </div>
       </div>
     </div>
+
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $(document).ready(function(){
+            $('#type').on('change', function(){
+                var id = $(this).find(':selected').val();
+
+                $.ajax({
+                    url: "{{route('room.data')}}/"+id,
+                    success: function(result){
+                        $('#room').html('');
+                        result.map(data => {
+                            $('#room').append(`<option value="${data.id}">${data.number} |  ${data.price}</option>`)
+                        })
+                    }
+                });
+            })
+            
+        })
+    </script>
   </body>
 </html>

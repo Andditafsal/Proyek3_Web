@@ -73,24 +73,16 @@
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  Login
+                  Dropdown
                 </a>
                 <div
                   class="dropdown-menu dropdown-menu-right"
                   aria-labelledby="navbarDropdown"
                 >
-                  {{-- <span class="dropdown-item"
-                    >Signed in as <b>lemon potter</b></span
-                  > --}}
-                  {{-- <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="./admin/index.html">Admin</a> --}}
-                  {{-- <a class="dropdown-item" href="login.html">Log in</a> --}}
-                  {{-- <a class="dropdown-item" href="signup.html">Sign up</a> --}}
                   <a class="dropdown-item" href="{{ url('/logintampilan')}}">Login</a>
                   <a class="dropdown-item" href="{{ url('/registertampilan')}}">Register</a>
-                  {{-- <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div> --}}
+                  <a class="dropdown-item" href="{{ url('/profiltampilan')}}">Profil</a>
+                  <a class="dropdown-item" href="{{ url('/profiltampilan')}}">Keluar</a>
               </li>
             </ul>
           </div>
