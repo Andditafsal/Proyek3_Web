@@ -126,9 +126,10 @@ Route::post('/postLogin', [AuthController::class, 'postLogin'])->name('postlogin
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-
+// Login tampilan
+Route::post('/app/login', [LogintampilanController::class, 'store']);
 Route::get('/logintampilan', [LogintampilanController::class, 'index']);
 
+// Register Tampilan
 Route::get('/registertampilan', [RegistertampilanController::class, 'index']);
-
-Route::post('/registertampilan', [RegistertampilanController::class, 'store']);
+Route::post('/tampilanregister', [RegistertampilanController::class, 'store']);

@@ -84,6 +84,15 @@
         <div class="form-wrapper">
           <div class="form-card">
             <h2>Silahkan Daftar</h2>
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error )
+                        <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
             <div class="d-none">
               Icons made by
               <a href="https://www.flaticon.com/authors/freepik" title="Freepik"
@@ -99,7 +108,7 @@
               {{-- <img src="./media/logo/google.svg" alt="google logo" /> --}}
               {{-- <button href="" class="btn">Sign in with google</button> --}}
             </div>
-            <form action="" method="post" class="form">
+            <form action="/tampilanregister" method="post" class="form">
                 @csrf
               <div class="form-group">
                 <label for="nama">Nama</label>
@@ -114,15 +123,6 @@
                   Must be 8-20 characters long.
                 </small> -->
               </div>
-              <div class="form-group">
-                <label for="password">Username</label>
-                <input
-                  type="Username"
-                  name="Username"
-                  placeholder="Username"
-                  class="form-control"
-
-                />
                 <div class="form-group">
                   <label for="password">Email</label>
                   <input

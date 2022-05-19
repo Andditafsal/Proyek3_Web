@@ -84,6 +84,10 @@
                   <a class="dropdown-item" href="{{ url('/profiltampilan')}}">Profil</a>
                   <a class="dropdown-item" href="{{ url('/profiltampilan')}}">Keluar</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link"
+                >
+              </li>
             </ul>
           </div>
         </nav>
@@ -170,8 +174,8 @@
       <!-- Featured Rooms -->
       <section id="featured-rooms">
         <div class="container my-5 py-5">
-          <div class="section-title">
-            <h2>Rekomendasi Kamar </h2>
+          <div class="section-title" >
+            <h2 >Rekomendasi Kamar </h2>
           </div>
           <div class="row custom-room-cards">
             <div class="col col-md-3">
@@ -258,7 +262,7 @@
             <div class="col-md-5">
               <div class="content">
                 <div class="section-title">
-                  <h2>Pilih kamar terbaik anda</h2>
+                  <h2 style="color: black;">Pilih kamar terbaik anda</h2>
                 </div>
                 <p>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos
@@ -345,7 +349,7 @@
           <div class="container">
             <div class="jumbotron">
               <h6></h6>
-              <h2>Nikmati setiap moment bersama orang yang kalian cintai</h2>
+              <h2 style="color: black;">Nikmati setiap moment bersama orang yang kalian cintai</h2>
             </div>
           </div>
         </div>

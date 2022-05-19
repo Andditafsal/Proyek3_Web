@@ -99,7 +99,8 @@
               {{-- <img src="./media/logo/google.svg" alt="google logo" /> --}}
               {{-- <button href="" class="btn">Sign in with google</button> --}}
             </div>
-            <form action="" method="post" class="form">
+            <form action="app/login" method="post" class="form">
+                @csrf
               <div class="form-group">
                 <label for="email">Email</label>
                 <input
